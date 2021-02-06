@@ -2,13 +2,15 @@ package com.musalasoft.gateways.controller;
 
 import com.musalasoft.gateways.model.Gateway;
 import com.musalasoft.gateways.service.GatewayService;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiResponse;
+import io.swagger.annotations.ApiResponses;
 import java.util.Objects;
 import javax.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -23,6 +25,11 @@ public class GatewayController {
 
     private final GatewayService gatewayService;
 
+    @ApiOperation("Get details of a gateway")
+    @ApiResponses(
+        value = {
+            @ApiResponse(code = 200, message = "Got details of a gateway", response = Gateway.class)
+        })
     @GetMapping("/gateways/{id}")
     public ResponseEntity<Object> getGatewayById(@PathVariable long id) {
         try {
@@ -40,6 +47,11 @@ public class GatewayController {
         }
     }
 
+    @ApiOperation("Create a new gateway")
+    @ApiResponses(
+        value = {
+            @ApiResponse(code = 201, message = "Gateway created successfully", response = Gateway.class)
+        })
     @PostMapping("/gateways")
     public ResponseEntity<Object> createGateway(@Valid @RequestBody Gateway gateway) {
         try {
@@ -50,12 +62,18 @@ public class GatewayController {
         }
     }
 
+    @ApiOperation("List all gateways")
+    @ApiResponses(
+        value = {
+            @ApiResponse(code = 200, message = "Got all gateways", response = Gateway[].class)
+        })
     @GetMapping("/gateways")
     public ResponseEntity<Object> getAllGateways() {
-        try{
+        try {
             return new ResponseEntity<>(gatewayService.getAllGateway(), HttpStatus.OK);
         } catch (Exception e) {
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Error getting all gateways", e);
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Error getting all gateways",
+                e);
         }
     }
 }

@@ -2,6 +2,9 @@ package com.musalasoft.gateways.controller;
 
 import com.musalasoft.gateways.model.Device;
 import com.musalasoft.gateways.service.DeviceService;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiResponse;
+import io.swagger.annotations.ApiResponses;
 import java.util.List;
 import javax.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -23,6 +26,11 @@ public class DeviceController {
 
     private final DeviceService deviceService;
 
+    @ApiOperation("Get a device under a gateway")
+    @ApiResponses(
+        value = {
+            @ApiResponse(code = 200, message = "Got details of a device", response = Device.class)
+        })
     @GetMapping("/gateways/{gatewayId}/devices/{id}")
     public ResponseEntity<Object> getDeviceById(@PathVariable Long gatewayId,
         @PathVariable Long id) {
@@ -36,6 +44,11 @@ public class DeviceController {
         }
     }
 
+    @ApiOperation("List all devices under a gateway")
+    @ApiResponses(
+        value = {
+            @ApiResponse(code = 200, message = "Got all devices under a gateway", response = Device[].class)
+        })
     @GetMapping("/gateways/{gatewayId}/devices")
     public ResponseEntity<Object> getAllDevices(@PathVariable Long gatewayId) {
         try{
@@ -48,6 +61,11 @@ public class DeviceController {
         }
     }
 
+    @ApiOperation("Create device under a gateway")
+    @ApiResponses(
+        value = {
+            @ApiResponse(code = 201, message = "Device created successfully", response = Device.class)
+        })
     @PostMapping("/gateways/{gatewayId}/devices")
     public ResponseEntity<Object> createDevice(@Valid @RequestBody Device device,
         @PathVariable Long gatewayId) {
@@ -60,6 +78,12 @@ public class DeviceController {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Error creating device", e);
         }
     }
+
+    @ApiOperation("Delete a device under a gateway")
+    @ApiResponses(
+        value = {
+            @ApiResponse(code = 204, message = "Device deleted successfully")
+        })
     @DeleteMapping("/gateways/{gatewayId}/devices/{id}")
     public ResponseEntity<Object> deleteDeviceById(@PathVariable Long gatewayId,
         @PathVariable Long id) {

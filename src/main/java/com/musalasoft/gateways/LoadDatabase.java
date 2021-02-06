@@ -38,7 +38,7 @@ public class LoadDatabase {
             log.info("Preloading Device" + deviceRepository.save(device1));
             log.info("Preloading Device" + deviceRepository.save(device2));
             log.info("Preloading Device" + deviceRepository.save(device3));
-            log.info("Test");
+            log.info("Data Loading Complete");
         };
     }
 }
