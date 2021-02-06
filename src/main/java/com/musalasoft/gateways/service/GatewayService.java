@@ -7,7 +7,8 @@ import org.springframework.stereotype.Service;
 
 public interface GatewayService {
     Gateway createGateway(Gateway gateway);
-    Gateway getGateway(String uid);
+
+    Gateway getGateway(long id);
     List<Gateway> getAllGateway();
-    void deleteGateway(String uuid);
+    void deleteGateway(Long id);
 }

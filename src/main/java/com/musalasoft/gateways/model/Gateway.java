@@ -23,7 +23,7 @@ import org.hibernate.annotations.FetchMode;
 @Data
 @NoArgsConstructor
 @RequiredArgsConstructor
-@ToString(of = {"uid", "name", "ip"})
+@ToString(of = {"serialNo", "uid", "name", "ip"})
 public class Gateway {
 
     @Id
@@ -32,7 +32,7 @@ public class Gateway {
 
     @NonNull
     @Column(unique = true)
-    private String uid;
+    private String serialNo;
 
     @NonNull
     private String name;

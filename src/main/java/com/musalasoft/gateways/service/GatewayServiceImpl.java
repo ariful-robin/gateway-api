@@ -5,9 +5,10 @@ import com.musalasoft.gateways.repository.GatewayRepository;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
-import java.util.UUID;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 
 @RequiredArgsConstructor
 @Service
@@ -17,41 +18,46 @@ public class GatewayServiceImpl implements GatewayService {
 
     @Override
     public Gateway createGateway(Gateway gateway) {
-        if(Objects.isNull(gateway)){
+        if (Objects.isNull(gateway)) {
             return null;
         }
-        String uid = gateway.getUid();
-        try {
-            Optional<Gateway> gatewayOptional = gatewayRepository.findGatewayByUid(uid);
-            if (gatewayOptional.isPresent()) {
-                Gateway existingGateway = gatewayOptional.get();
-                existingGateway.setUid(gateway.getUid());
-                existingGateway.setName(gateway.getName());
-                existingGateway.setIp(gateway.getIp());
-                gatewayRepository.save(existingGateway);
-                return existingGateway;
-            } else {
-                return gatewayRepository.save(gateway);
-            }
-        } catch (Exception e){
-            throw e;
+
+        String serialNo = gateway.getSerialNo();
+        Optional<Gateway> gatewayOptional = gatewayRepository.findGatewayBySerialNo(serialNo);
+        if (gatewayOptional.isPresent()) {
+            Gateway existingGateway = gatewayOptional.get();
+            existingGateway.setSerialNo(gateway.getSerialNo());
+            existingGateway.setName(gateway.getName());
+            existingGateway.setIp(gateway.getIp());
+            gatewayRepository.save(existingGateway);
+            return existingGateway;
+        } else {
+            return gatewayRepository.save(gateway);
         }
+
     }
 
     @Override
-    public Gateway getGateway(String uid) {
-        Optional<Gateway> gatewayOptional = gatewayRepository.findGatewayByUid(uid);
+    public Gateway getGateway(long id) {
+        Optional<Gateway> gatewayOptional = gatewayRepository.findById(id);
         return gatewayOptional.orElse(null);
 
     }
 
     @Override
     public List<Gateway> getAllGateway() {
-        return null;
+        return gatewayRepository.findAll();
     }
 
     @Override
-    public void deleteGateway(String uuid) {
-
+    public void deleteGateway(Long id) {
+        if(Objects.isNull(id)) {
+            return;
+        }
+        Gateway gateway = getGateway(id);
+        if(Objects.isNull(gateway)) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "No gateway found for this id");
+        }
+        gatewayRepository.deleteById(id);
     }
 }

@@ -8,5 +8,5 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface GatewayRepository extends JpaRepository<Gateway, Long> {
 
-    Optional<Gateway> findGatewayByUid(String uid);
+    Optional<Gateway> findGatewayBySerialNo(String serialNo);
 }

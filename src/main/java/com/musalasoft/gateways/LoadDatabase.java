@@ -40,12 +40,6 @@ public class LoadDatabase {
             log.info("Preloading Device" + deviceRepository.save(device1));
             log.info("Preloading Device" + deviceRepository.save(device2));
             log.info("Preloading Device" + deviceRepository.save(device3));
-
-            List<Gateway> gatewayList = new ArrayList<>();
-            gatewayList = gatewayRepository.findAll();
-
-            log.info("Fetch Data From Database: ");
-
         };
     }
 }
