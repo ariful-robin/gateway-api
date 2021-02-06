@@ -9,16 +9,23 @@ import javax.validation.Constraint;
 import javax.validation.Payload;
 
 @Retention(RetentionPolicy.RUNTIME)
-@Target({ ElementType.METHOD, ElementType.FIELD, ElementType.ANNOTATION_TYPE })
+@Target({ElementType.METHOD, ElementType.FIELD, ElementType.ANNOTATION_TYPE})
 @Documented
 @Constraint(validatedBy = IpValidator.class)
 public @interface ValidIp {
-    /** Default message. */
+
+    /**
+     * Default message.
+     */
     String message() default "IP address is not valid!! ";
 
-    /** Default class group. */
+    /**
+     * Default class group.
+     */
     Class<?>[] groups() default {};
 
-    /** class playlod. */
+    /**
+     * class playlod.
+     */
     Class<? extends Payload>[] payload() default {};
 }

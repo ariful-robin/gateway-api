@@ -17,7 +17,7 @@ public class ExceptionHandlingController {
     private ResponseEntity<Object> handleResponseStatusException(ResponseStatusException e) {
         Map<String, Object> response = new HashMap<>();
         response.put(Constants.ERROR, e.getReason());
-        response.put(Constants.MESSAGE, e.getMessage());
+//        response.put(Constants.MESSAGE, e.getMessage());
         log.error(e.getMessage());
         return new ResponseEntity<>(response, e.getStatus());
     }

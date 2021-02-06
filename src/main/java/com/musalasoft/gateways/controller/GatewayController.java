@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
@@ -59,17 +58,4 @@ public class GatewayController {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Error getting all gateways", e);
         }
     }
-
-    @DeleteMapping("/gateways/{id}")
-    public ResponseEntity<Object> deleteGateway(@PathVariable Long id) {
-        try{
-            gatewayService.deleteGateway(id);
-            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-        } catch (ResponseStatusException e) {
-            throw e;
-        }catch (Exception e) {
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Error deleting gateway", e);
-        }
-    }
-
 }

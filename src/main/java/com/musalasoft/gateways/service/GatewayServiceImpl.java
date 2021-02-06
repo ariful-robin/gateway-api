@@ -6,9 +6,7 @@ import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
-import org.springframework.web.server.ResponseStatusException;
 
 @RequiredArgsConstructor
 @Service
@@ -47,17 +45,5 @@ public class GatewayServiceImpl implements GatewayService {
     @Override
     public List<Gateway> getAllGateway() {
         return gatewayRepository.findAll();
-    }
-
-    @Override
-    public void deleteGateway(Long id) {
-        if(Objects.isNull(id)) {
-            return;
-        }
-        Gateway gateway = getGateway(id);
-        if(Objects.isNull(gateway)) {
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "No gateway found for this id");
-        }
-        gatewayRepository.deleteById(id);
     }
 }
