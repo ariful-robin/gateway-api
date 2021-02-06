@@ -32,7 +32,7 @@ public class DeviceServiceImpl implements DeviceService {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST,
                 "No parent gateway found with this id");
         }
-        if (gateway.getDevices().size() > Constants.MAX_DEVICES) {
+        if (gateway.getDevices().size() >= Constants.MAX_DEVICES) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST,
                 "Gateway already has max number of devices");
         }
@@ -59,7 +59,7 @@ public class DeviceServiceImpl implements DeviceService {
         Device device = deviceRepository.getDeviceByIdAndGatewayId(id, gatewayId).orElse(null);
         if (Objects.isNull(device)) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND,
-                "No device found under the gateway");
+                Constants.NO_DEVICE_FOUND);
         }
         return device;
     }

@@ -12,11 +12,4 @@ class GatewaysApplicationTests {
 	@Test
 	void contextLoads() {
 	}
-
-	@Test
-	void smokeTest() {
-		Gateway gateway = new Gateway("1254638avdfd36", "G1", "192.168.0.1");
-		assertTrue(gateway.getName().equals("G1"));
-	}
-
 }
