@@ -62,6 +62,7 @@ running the application with swagger ui.
 
 # API Client
 Postman was used as REST client to test the APIs. Please refer to the postman collection. 
+Following collection can be imported to postman.
 - musala-gateway.postman_collection.json
 
 
