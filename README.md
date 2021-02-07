@@ -53,8 +53,8 @@ Application can be run as executable jar with following steps.
 - Build command: _docker build -t gateway ._
 
 ### Run
-- Run command: _docker run -p 8080:8080 -d_ 
-
+- Run command: _docker run -p 8080:8080 -d gateway_
+ 
 # API Documentation
 swagger has been incorporated here to produce API documentation. You can access api documentation after
 running the application with swagger ui.
