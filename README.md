@@ -43,7 +43,7 @@ Application can be run as executable jar with following steps.
 
 - Follow Build section above to build
 - Install jre >= 12
-- Run command: _java -jar gateways-0.0.1-SNAPSHOT.jar_ [Here, jar file is from build]
+- Run command: _java -jar target/gateways-0.0.1-SNAPSHOT.jar_ [Here, jar file is from build]
 
 # Build and Run with Docker
 
