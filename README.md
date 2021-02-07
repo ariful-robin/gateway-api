@@ -50,7 +50,7 @@ Application can be run as executable jar with following steps.
 ### Build
 - Install docker (if you don't have it in machine)
 - Go the project root containing the Dockerfile
-- Run command: _docker build -t gateway ._
+- Build command: _docker build -t gateway ._
 
 ### Run
 - Run command: _docker run -p 8080:8080 -d_ 
@@ -61,7 +61,8 @@ running the application with swagger ui.
 - swagger ui: http://localhost:8080/api/swagger-ui/
 
 # API Client
-Postman was used as REST client to test the APIs. Please refer to the postman collection.
+Postman was used as REST client to test the APIs. Please refer to the postman collection. 
+- musala-gateway.postman_collection.json
 
 
 
