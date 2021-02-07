@@ -1,4 +1,4 @@
-# musala-gateways
+# gateway-api
 This is a REST API project for gateway management. This project includes REST APIs for managing CRUD 
 operations of gateways and devices under those gateways. Number of constraints have been set while 
 developing these APIs. Followings are few constraints induced here.
