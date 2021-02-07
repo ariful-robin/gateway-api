@@ -58,7 +58,7 @@ Application can be run as executable jar with following steps.
 # API Documentation
 swagger has been incorporated here to produce API documentation. You can access api documentation after
 running the application with swagger ui.
-- swagger ui: http://localhost:8080/api/h2-console/
+- swagger ui: http://localhost:8080/api/swagger-ui
 
 # API Client
 Postman was used as REST client to test the APIs. Please refer to the postman collection.
