@@ -26,8 +26,7 @@ H2 console is also configured to visualize database however the data are volatil
 - H2 console url: http://localhost:8080/api/h2-console/
 
 # Test Cases
-Number of test cases are included in this application to test web mvc as well as to test the constraints
-with unit testing.
+Number of test cases are included in this application to test web mvc. Besides, number of unit testing functions were added to test the functionalities with constraints.
 
 # Build and Run as Executable JAR
 ### Build
