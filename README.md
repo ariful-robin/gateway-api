@@ -24,6 +24,7 @@ H2 in memory database has been used. Application will load some test data while 
 H2 console is also configured to visualize database however the data are volatile by nature.
 
 - H2 console url: http://localhost:8080/api/h2-console/
+This in-memory database can be replaced by any standard database.
 
 # Test Cases
 Number of test cases are included in this application to test web mvc. Besides, number of unit testing functions were added to test the functionalities with constraints.
